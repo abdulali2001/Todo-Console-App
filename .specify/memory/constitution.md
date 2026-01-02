@@ -1,55 +1,49 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- Sync Impact Report:
+     Version change: N/A (initial creation) → 1.0.0
+     Modified principles: N/A (new principles created)
+     Added sections: All sections (initial constitution)
+     Removed sections: N/A
+     Templates requiring updates: N/A (new file)
+     Follow-up TODOs: None
+-->
+# Todo App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Simplicity First
+All code must be minimal, easy to understand and extend. Complexity should be introduced only when absolutely necessary. Features should be implemented with the fewest possible lines of code while maintaining readability and maintainability.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Clean Architecture
+Maintain clear separation between data, business logic and user interface (console). Data models, business rules, and presentation layers must be distinct and loosely coupled. This enables easier testing, maintenance and future modifications.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### In-Memory Only
+All data must exist only in memory with no persistence. The application must not save data to files, databases or external storage. Program restart results in complete data loss - this is an intentional design constraint for Phase I.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### User-Friendly Console Interface
+The console interface must be clear, readable and forgiving with input handling. Error messages should be helpful and guide users toward correct input. Menu navigation should be intuitive and consistent across all commands.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Defensive Programming
+All user inputs must be validated with graceful error messages. The application must handle invalid inputs without crashing. Input validation should reject invalid choices, out-of-range numbers, empty titles, and other malformed data.
 
-### [PRINCIPLE_6_NAME]
+### Type Safety and Documentation
+All functions and important variables must use type hints. Every public function and class must have docstrings following Google or NumPy style. Variable and function names must be meaningful without abbreviations.
 
+## Additional Constraints
 
-[PRINCIPLE__DESCRIPTION]
+Python 3.13+ (or latest stable) must be used with modern syntax where it improves clarity. No external libraries except built-ins are allowed. Follow PEP 8 style with black formatting. Use specific except clauses only, never bare except:. The application should be in a single file (todo.py) with in-memory storage using list[dict] or dataclass + list.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+The console menu must support: Add new todo (title + optional description/priority/due date), List all todos (numbered, show status, priority if present), Mark todo as done/undone (by number), Delete todo (by number), Clear all todos (with yes/no confirmation), and Exit/Quit.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Development Standards
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+All code must follow PEP 8 style guidelines with black formatting strongly recommended. Type hints are required on all functions and important variables using the typing module. Docstrings are required on every public function/class using Google or NumPy style. Error handling must use specific except clauses only, never bare except:.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+Input validation must reject invalid choices, out-of-range numbers, empty titles, and other malformed inputs. The application must run without crashing on invalid inputs (e.g. non-integer when asking for number). All required commands must work correctly and consistently.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other practices and development guidelines for this project. All code changes must comply with these principles. Amendments to this constitution require explicit documentation, approval from project maintainers, and a migration plan for existing code.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+All pull requests and code reviews must verify compliance with these principles. Code complexity must be justified with clear benefits that outweigh the added maintenance burden. New features must align with the core principles of simplicity, clean architecture, and defensive programming.
+
+**Version**: 1.0.0 | **Ratified**: 2026-01-02 | **Last Amended**: 2026-01-02
